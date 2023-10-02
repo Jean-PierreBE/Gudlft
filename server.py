@@ -1,6 +1,6 @@
 import json
 from flask import Flask,render_template,request,redirect,flash,url_for
-
+from check import check_mail
 
 def loadClubs():
     with open('clubs.json') as c:
@@ -26,18 +26,17 @@ def index():
 
 @app.route('/showSummary',methods=['POST'])
 def showSummary():
-    email = request.form['email']
-    if not email:
-        flash("the email is empty")
-        return render_template('index.html')
+    ret, club = check_mail(request.form['email'], clubs)
+    if ret == 0:
+        return render_template('welcome.html', club=club, competitions=competitions)
     else:
-        for club in clubs:
-            if club['email'] == request.form['email']:
-                club = [club][0]
-                return render_template('welcome.html', club=club, competitions=competitions)
-        flash("this email is unknown !!")
+        if(ret == 1):
+            flash("the email is empty")
+        elif (ret == 2):
+            flash("this email is unknown !!")
+        else:
+            flash("error unknown !!")
         return render_template('index.html')
-
 
 @app.route('/book/<competition>/<club>')
 def book(competition,club):
