@@ -1,6 +1,7 @@
 import json
 from flask import Flask, render_template, request, redirect, flash, url_for
-from check import check_mail
+from check import check_mail, check_places
+from constants import MESSAGES_EMAIL, MESSAGES_PLACES
 
 
 def loadClubs():
@@ -33,12 +34,7 @@ def showSummary():
     if ret == 0:
         return render_template('welcome.html', club=club, competitions=competitions)
     else:
-        if (ret == 1):
-            flash("the email is empty")
-        elif (ret == 2):
-            flash("this email is unknown !!")
-        else:
-            flash("error unknown !!")
+        flash(MESSAGES_EMAIL[ret])
         return render_template('index.html')
 
 
@@ -57,10 +53,15 @@ def book(competition, club):
 def purchasePlaces():
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
-    placesRequired = int(request.form['places'])
-    competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
-    flash('Great-booking complete!')
-    return render_template('welcome.html', club=club, competitions=competitions)
+    ret = check_places(request.form['places'], int(competition['numberOfPlaces']))
+    if ret == 0:
+        placesRequired = int(request.form['places'])
+        competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
+        flash(MESSAGES_PLACES[0])
+        return render_template('welcome.html', club=club, competitions=competitions)
+    else:
+        flash(MESSAGES_PLACES[ret])
+        return render_template('booking.html', club=club, competition=competition)
 
 
 @app.route('/logout')
