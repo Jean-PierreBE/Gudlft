@@ -1,4 +1,4 @@
-from constants import MAX_PLACES
+from utilities.constants import MAX_PLACES
 
 
 def check_mail(email, clubs):

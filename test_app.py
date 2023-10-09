@@ -1,6 +1,6 @@
 import pytest
 import logging
-from check import check_mail, check_places
+from utilities.check import check_mail, check_places
 from server import loadClubs
 PLACES_AVAILABLE = 25
 
