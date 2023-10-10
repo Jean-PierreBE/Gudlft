@@ -2,7 +2,8 @@ import pytest
 import logging
 from utilities.check import check_mail, check_places
 from server import loadClubs
-PLACES_AVAILABLE = 25
+PLACES_AVAILABLE = 10
+NUMBER_POINTS = 4
 
 clubs = loadClubs()
 logging.basicConfig(level=logging.INFO)
@@ -24,8 +25,9 @@ def test_checkmail(test_email, expected_result, expected_data):
     (0, 2),
     (-2, 3),
     (25, 4),
-    (13, 5)
+    (5, 5),
+    (6, 6)
 ])
 def test_checkplaces(test_places, expected_result):
-    result = check_places(test_places, PLACES_AVAILABLE)
+    result = check_places(test_places, PLACES_AVAILABLE, NUMBER_POINTS)
     assert result == expected_result

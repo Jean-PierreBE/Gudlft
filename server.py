@@ -53,10 +53,11 @@ def book(competition, club):
 def purchasePlaces():
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
-    ret = check_places(request.form['places'], int(competition['numberOfPlaces']))
+    ret = check_places(request.form['places'], int(competition['numberOfPlaces']), int(club['points']))
     if ret == 0:
         placesRequired = int(request.form['places'])
         competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
+        club['points'] = int(club['points']) - placesRequired
         flash(MESSAGES_PLACES[0])
         return render_template('welcome.html', club=club, competitions=competitions)
     else:
