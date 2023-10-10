@@ -3,7 +3,8 @@
 
 {%block body_main%}
     <h1>Welcome to the GUDLFT Registration Portal!</h1>
-    Please enter your secretary email to continue:
+    <a href="{{url_for('dashboard')}}">Dashboard Clubs</a>
+    <h3>Please enter your secretary email to continue:</h3>
     <form action="showSummary" method="post">
         <label for="email">Email:</label>
         <input type="email" name="email" id=""/>

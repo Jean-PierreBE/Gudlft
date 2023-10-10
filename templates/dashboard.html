@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{% block title %} Dashboard {% endblock %}
+
+{%block body_main%}
+    <h2>Dashboard of clubs </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Club</th>
+                <th>Number of points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for record in clubs%}
+            <tr>
+                <td>{{record["name"]}}</td>
+                <td>{{record["points"]}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    <a href="{{url_for('index')}}">Return to the login page</a>
+{%endblock%}
