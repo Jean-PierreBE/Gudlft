@@ -57,14 +57,13 @@ def purchasePlaces():
         return render_template('welcome.html', club=club, competitions=competitions)
     else:
         ret = check_places(request.form['places'], int(competition['numberOfPlaces']), int(club['points']))
+        flash(MESSAGES_PLACES[ret])
         if ret == 0:
             placesRequired = int(request.form['places'])
             competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
             club['points'] = int(club['points']) - placesRequired
-            flash(MESSAGES_PLACES[0])
             return render_template('welcome.html', club=club, competitions=competitions)
         else:
-            flash(MESSAGES_PLACES[ret])
             return render_template('booking.html', club=club, competition=competition)
 
 

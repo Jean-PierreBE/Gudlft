@@ -1,2 +1,2 @@
 [run]
-omit = test_app.py, conftest.py
+omit = test_check.py, conftest.py, test_routes.py, test_performance.py, test_db.py, __init__.py
