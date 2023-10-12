@@ -1,7 +1,7 @@
 import json
 from flask import Flask, render_template, request, redirect, flash, url_for
-from utilities.check import check_mail, check_places
-from utilities.constants import MESSAGES_EMAIL, MESSAGES_PLACES
+from utilities.check import check_mail, check_places, check_name
+from utilities.constants import MESSAGES_EMAIL, MESSAGES_PLACES, MESSAGES_COMPETITION, MESSAGES_CLUB
 
 
 def loadClubs():
@@ -40,12 +40,16 @@ def showSummary():
 
 @app.route('/book/<competition>/<club>')
 def book(competition, club):
-    foundClub = [c for c in clubs if c['name'] == club][0]
-    foundCompetition = [c for c in competitions if c['name'] == competition][0]
-    if foundClub and foundCompetition:
-        return render_template('booking.html', club=foundClub, competition=foundCompetition)
+    retcl, foundClub = check_name(club, clubs)
+    if retcl == 0:
+        retcomp, foundCompetition = check_name(competition, competitions)
+        if retcomp == 0:
+            return render_template('booking.html', club=foundClub, competition=foundCompetition)
+        else:
+            flash(MESSAGES_COMPETITION[retcomp])
+            return render_template('welcome.html', club=club, competitions=competitions)
     else:
-        flash("Something went wrong-please try again")
+        flash(MESSAGES_CLUB[retcl])
         return render_template('welcome.html', club=club, competitions=competitions)
 
 

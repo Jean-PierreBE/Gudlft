@@ -11,6 +11,16 @@ def check_mail(email, clubs):
         return 2, None
 
 
+def check_name(name, groups):
+    if name == '':
+        return 1, None
+    else:
+        for group in groups:
+            if group['name'] == name:
+                return 0, [group][0]
+        return 2, None
+
+
 def check_places(places_choosen, places_available, points_available):
     if places_choosen == '':
         return 1
