@@ -1,3 +1,9 @@
+"""
+this package test functions to
+       mail for the registration
+       number of places
+       presence of club or competition
+"""
 import pytest
 from utilities.check import check_mail, check_places, check_name
 from server import loadClubs, loadCompetitions

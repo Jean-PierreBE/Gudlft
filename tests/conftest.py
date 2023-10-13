@@ -1,6 +1,5 @@
 import pytest
-import sys
-sys.path.append('../')
+
 from server import app as server_app
 
 
