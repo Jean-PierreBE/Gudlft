@@ -1,22 +1,10 @@
 """
     main programm
 """
-import json
 from flask import Flask, render_template, request, redirect, flash, url_for
 from utilities.check import check_mail, check_places, check_name
 from utilities.constants import MESSAGES_EMAIL, MESSAGES_PLACES, MESSAGES_COMPETITION, MESSAGES_CLUB
-
-
-def loadClubs():
-    with open('db/clubs.json') as c:
-        listOfClubs = json.load(c)['clubs']
-        return listOfClubs
-
-
-def loadCompetitions():
-    with open('db/competitions.json') as comps:
-        listOfCompetitions = json.load(comps)['competitions']
-        return listOfCompetitions
+from utilities.load_db import loadClubs, loadCompetitions
 
 
 app = Flask(__name__)
