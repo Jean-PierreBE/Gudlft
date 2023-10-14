@@ -46,26 +46,26 @@ dans le browser de votre choix.
   - le nombre de places maximum de réservation est de 12
 
 ## Tests
-pour voir si le programme passe les tests unitaires et d'intégration exécuter la commande suivante :
-- `pytest --html=test_report.html --self-contained-html`
-- visualiser le fichier test_report.html
-pour voir la couverture des tests lancer la commande suivante :
-- `pytest --cov=. --cov-report html`
-- visualiser le fichier index.html dans le répertoire htmlcov
-pour faire des tests de performance
-- aller dans le répertoire tests
-- lancer la commande suivante :
-  - `locust -f test_performance.py --html=performance_report.html`
-  - aller sur l'url `http://localhost:8089/`
-    - choisir le nombre d'utilisateur , 
-    - l'url à tester `http://127.0.0.1:5000/`
-    - stopper l'exécution sur l'url
-    - stopper le serveur
-- visualiser le rapport performance_report.html
+- pour voir si le programme passe les tests unitaires et d'intégration exécuter la commande suivante :
+  - `pytest --html=test_report.html --self-contained-html`
+  - visualiser le fichier test_report.html
+- pour voir la couverture des tests lancer la commande suivante :
+  - `pytest --cov=. --cov-report html`
+  - visualiser le fichier index.html dans le répertoire htmlcov
+- pour faire des tests de performance
+  - aller dans le répertoire tests
+  - lancer la commande suivante :
+    - `locust -f test_performance.py --html=performance_report.html`
+    - aller sur l'url `http://localhost:8089/`
+      - choisir le nombre d'utilisateur , 
+      - l'url à tester `http://127.0.0.1:5000/`
+      - stopper l'exécution sur l'url
+      - stopper le serveur
+  - visualiser le rapport performance_report.html
 
 ## Contrôle qualité
 Pour vérifier la qualité du code , on peut lancer la commande suivante :
-- `flake8 --format=html --htmldir=flake-report src`
+- `flake8 --format=html --htmldir=flake-report`
 Le rapport sortira en format html dans le répertoire flake-report
 
 pour cela il faut installer :

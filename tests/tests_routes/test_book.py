@@ -1,3 +1,7 @@
+"""
+    integrations tests for booking places
+"""
+
 
 def test_book_ok(client):
     response = client.get('/book/Spring Festival/Simply Lift', follow_redirects=True)

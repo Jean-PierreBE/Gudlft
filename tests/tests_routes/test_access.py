@@ -1,3 +1,7 @@
+"""
+    integrations tests for dashboard and connections
+"""
+
 
 def test_acces_gudlft(client):
     response = client.get("/")

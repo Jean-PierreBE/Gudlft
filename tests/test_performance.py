@@ -1,3 +1,6 @@
+"""
+    Performance tests for all the site
+"""
 from locust import HttpUser, task
 
 

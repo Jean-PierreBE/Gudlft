@@ -1,3 +1,7 @@
+"""
+    integrations tests for purchase
+"""
+
 
 def test_purchase_ok(client):
     response = client.post("/purchasePlaces", data={

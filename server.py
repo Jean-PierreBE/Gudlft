@@ -1,3 +1,6 @@
+"""
+    main programm
+"""
 import json
 from flask import Flask, render_template, request, redirect, flash, url_for
 from utilities.check import check_mail, check_places, check_name
