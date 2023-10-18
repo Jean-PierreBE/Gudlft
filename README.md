@@ -31,7 +31,7 @@ les packages installés sont les suivants :
 - locust
 
 ## Lancement du programme
-- On lance le programme en tapant sur la ligne de commande dans le répertoire src:
+- On lance le programme en tapant sur la ligne de commande dans le répertoire Gudlft:
   - `python server.py`
 
 ## Déroulement du programme

@@ -3,7 +3,7 @@
 
 {%block body_main%}
     <h2>Dashboard of clubs </h2>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <th>Club</th>
@@ -19,5 +19,6 @@
             {%endfor%}
         </tbody>
     </table>
+    <br />
     <a href="{{url_for('index')}}">Return to the login page</a>
 {%endblock%}
