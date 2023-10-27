@@ -53,7 +53,7 @@ dans le browser de votre choix.
   - `pytest --cov=. --cov-report html`
   - visualiser le fichier index.html dans le répertoire htmlcov
 - pour faire des tests de performance
-  - aller dans le répertoire tests
+  - aller dans le répertoire tests/tests_performance
   - lancer la commande suivante :
     - `locust -f test_performance.py --html=performance_report.html`
     - aller sur l'url `http://localhost:8089/`
